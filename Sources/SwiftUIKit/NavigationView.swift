@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftUIKit
 
 /// Create a NavigationView that can support SearchBar and more.
 /// use .addSearchController to add an searchBar.
@@ -12,7 +13,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
     var searchResultView: AnyView? = nil
     var content: Content
 
-    init(@ViewBuilder content: @escaping () -> Content) {
+    public init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content()
         _searchForText = .constant("")
     }
@@ -23,7 +24,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
 
     public class Coordinator: NSObject, UISearchResultsUpdating {
         @Binding var searchForText: String
-        init(searchForText: Binding<String>) {
+        public init(searchForText: Binding<String>) {
             _searchForText = searchForText
         }
 
@@ -32,7 +33,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
         }
     }
 
-    public func makeUIViewController(context: UIViewControllerRepresentableContext<navigationViewController>) -> UINavigationController {
+    public func makeUIViewController(context: Context) -> UINavigationController {
 
         let vc = UIHostingController(rootView: content)
         let navVC = UINavigationController(rootViewController: vc)
@@ -53,9 +54,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
         return navVC
     }
 
-    public func updateUIViewController(_ vc: UINavigationController, context: UIViewControllerRepresentableContext<navigationViewController>) {
-        // Update UIVIew Controller
-    }
+    public func updateUIViewController(_ vc: UINavigationController, context: Context) { }
 
     public func navigationContollerTitle(_ title: String, displayMode: NavigationBarItem.TitleDisplayMode = .large) -> navigationViewController {
         var modifier = self
@@ -70,6 +69,9 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
         return modifier
     }
 
+    /// **searchForText**: A Binding value that provides what the user typed.
+    /// **resultView**: A View that shows the search result.
+    /// Note: You can write it as ** AnyVIew(YourView) **
     public func addSearchController(searchForText: Binding<String>, resultView: AnyView) -> navigationViewController {
         var modifier = self
         modifier.searchResultView = resultView
