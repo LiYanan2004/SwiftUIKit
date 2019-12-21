@@ -18,11 +18,11 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
         _searchForText = .constant("")
     }
 
-    func makeCoordinator() -> navigationViewController.Coordinator {
+    public func makeCoordinator() -> navigationViewController.Coordinator {
         return Coordinator(searchForText: $searchForText)
     }
 
-    class Coordinator: NSObject, UISearchResultsUpdating {
+    public class Coordinator: NSObject, UISearchResultsUpdating {
         @Binding var searchForText: String
         init(searchForText: Binding<String>) {
             _searchForText = searchForText
@@ -33,7 +33,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
         }
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<navigationViewController>) -> UINavigationController {
+    public func makeUIViewController(context: UIViewControllerRepresentableContext<navigationViewController>) -> UINavigationController {
 
         let vc = UIHostingController(rootView: content)
         let navVC = UINavigationController(rootViewController: vc)
@@ -54,24 +54,24 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
         return navVC
     }
 
-    func updateUIViewController(_ vc: UINavigationController, context: UIViewControllerRepresentableContext<navigationViewController>) {
+    public func updateUIViewController(_ vc: UINavigationController, context: UIViewControllerRepresentableContext<navigationViewController>) {
         // Update UIVIew Controller
     }
 
-    func navigationContollerTitle(_ title: String, displayMode: NavigationBarItem.TitleDisplayMode = .large) -> navigationViewController {
+    public func navigationContollerTitle(_ title: String, displayMode: NavigationBarItem.TitleDisplayMode = .large) -> navigationViewController {
         var modifier = self
         modifier.navigationBarTitle = title
         modifier.NavigationBarTitleDisplayMode = displayMode
         return modifier
     }
 
-    func searchBarPlaceHolder(_ text: String) -> navigationViewController {
+    public func searchBarPlaceHolder(_ text: String) -> navigationViewController {
         var modifier = self
         modifier.searchBarPlaceHolder = text
         return modifier
     }
 
-    func addSearchController(searchForText: Binding<String>, resultView: AnyView) -> navigationViewController {
+    public func addSearchController(searchForText: Binding<String>, resultView: AnyView) -> navigationViewController {
         var modifier = self
         modifier.searchResultView = resultView
         modifier._searchForText = searchForText
