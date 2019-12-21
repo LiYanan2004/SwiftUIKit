@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 /// Create a NavigationView that can support SearchBar and more.
 /// use .addSearchController to add an searchBar.
 @available(iOS 13.0, *)
@@ -28,7 +27,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
             _searchForText = searchForText
         }
 
-        func updateSearchResults(for searchController: UISearchController) {
+        public func updateSearchResults(for searchController: UISearchController) {
             self.searchForText = searchController.searchBar.text ?? ""
         }
     }
