@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NavigationView.swift
 //  
 //
 //  Created by LiYanan2004 on 2019/12/20.
@@ -7,7 +7,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct navigationViewController<Content: View>: UIViewControllerRepresentable {
+public struct navigationViewController<Content: View>: UIViewControllerRepresentable {
 
     @Binding var searchForText: String
     var navigationBarTitle: String? = nil
