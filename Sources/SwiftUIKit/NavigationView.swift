@@ -1,5 +1,8 @@
 import SwiftUI
 
+
+/// Create a NavigationView that can support SearchBar and more.
+/// use .addSearchController to add an searchBar.
 @available(iOS 13.0, *)
 public struct navigationViewController<Content: View>: UIViewControllerRepresentable {
 
