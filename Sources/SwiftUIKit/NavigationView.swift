@@ -1,9 +1,3 @@
-//
-//  NavigationView.swift
-//  
-//
-//  Created by LiYanan2004 on 2019/12/20.
-//
 import SwiftUI
 
 @available(iOS 13.0, *)
