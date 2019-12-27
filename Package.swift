@@ -21,6 +21,9 @@ let package = Package(
         .target(
             name: "SwiftUIKit",
             dependencies: []),
+        .target(
+            name: "ViewModifier",
+            dependencies: []),
         .testTarget(
             name: "SwiftUIKitTests",
             dependencies: ["SwiftUIKit"]),
