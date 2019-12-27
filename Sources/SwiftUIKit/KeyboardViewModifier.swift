@@ -6,6 +6,8 @@ import Combine
 @available(iOS 13.0, *)
 public struct KeyboardAnimated: ViewModifier {
 
+    public init() { }
+    
     @State private var keyboardHeight = CGFloat()
     public var keyBoardHeightPublisher: AnyPublisher<CGFloat, Never> {
         Publishers.Merge(
