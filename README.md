@@ -28,13 +28,19 @@ Since swiftUI is still in its infancy, many uikit content is not included, so th
 
 #### NavigationView with a searchBar
 
+**Declare a variable to hold keywords**
+
 ```swift
 @State var keywords = ""
+```
+**Create the NavigationView like this :**
+
+```swift
 navigationViewController {
   // The Content in NavigationView
 }
-	.addSearchController(searchFor: $keywords, resultView: Anyview(ResultView))
-	.searchBarPlaceHolder("Search For Something")
+.addSearchController(searchFor: $keywords, resultView: Anyview(ResultView))
+.searchBarPlaceHolder("Search For Something")
 ```
 
 **Notes:** 
