@@ -26,7 +26,7 @@ Since swiftUI is still in its infancy, many uikit content is not included, so th
 
 ## Examples
 
-#### NavigationView with a searchBar
+### NavigationView with a searchBar
 
 **Declare a variable to hold keywords**
 
