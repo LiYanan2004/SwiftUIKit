@@ -71,7 +71,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
     /// `searchForText:` A Binding value that provides what the user typed.
     /// `resultView:` A View that shows the search result.
     /// `Note: You can write it as AnyView(YourView) `
-    public func addSearchController(searchForText: Binding<String>, resultView: AnyView) -> navigationViewController {
+    public func addSearchController(searchFor: Binding<String>, resultView: AnyView) -> navigationViewController {
         var modifier = self
         modifier.searchResultView = resultView
         modifier._searchForText = searchForText

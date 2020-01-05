@@ -1,16 +1,20 @@
-# SwiftUI + UIKit
+SwiftUI + UIKit
+=======
+
 
 Use this repository, you can add some UIKit Elements to SwiftUI.
 
 
 
-## Why I create this repository ?
+Why I create this repository ?
+------------------------------
 
 Since swiftUI is still in its infancy, many uikit content is not included, so this repository was born.
 
 
 
-## What components does it currently cover?
+What components does it currently cover?
+---------------------------------------------
 
 - [x] **NavigationView**
 
@@ -24,7 +28,8 @@ Since swiftUI is still in its infancy, many uikit content is not included, so th
 
   
 
-## Examples
+Examples
+-----------
 
 ### **NavigationView with a searchBar**
 
@@ -49,8 +54,8 @@ navigationViewController {
 - **The “searchFor” parameter refers to the content of the keywords entered by the user**
 
 
-
-## More
+More
+--------
 
 If you wants more components, you can [**Create an issure**](https://github.com/LiYanan2004/SwiftUIKit/issues/new).
 
