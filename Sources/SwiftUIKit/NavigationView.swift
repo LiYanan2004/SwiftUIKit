@@ -74,7 +74,7 @@ public struct navigationViewController<Content: View>: UIViewControllerRepresent
     public func addSearchController(searchFor: Binding<String>, resultView: AnyView) -> navigationViewController {
         var modifier = self
         modifier.searchResultView = resultView
-        modifier._searchForText = searchForText
+        modifier._searchForText = searchFor
         return modifier
     }
 }

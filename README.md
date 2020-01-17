@@ -57,6 +57,6 @@ navigationViewController {
 More
 --------
 
-If you wants more components, you can [**Create an issure**](https://github.com/LiYanan2004/SwiftUIKit/issues/new).
+If you want more components, you can [**Create an issure**](https://github.com/LiYanan2004/SwiftUIKit/issues/new).
 
 If you have created some great components, you can [**Pull a Request to me**](https://github.com/LiYanan2004/SwiftUIKit/pulls).
