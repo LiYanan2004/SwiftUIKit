@@ -11,7 +11,7 @@ import SwiftUI
 public func showPopover(from rootView: UIViewController, to destination: AnyView, WindowSize: CGSize, rect: CGRect) {
     let destinationController = UIHostingController(rootView: destination)
     let delegate = PopoverConfiguration()
-    let blankView = UIView(frame: rect)
+    let blankView = UIView(frame: rect.offsetBy(dx: 0, dy: 15 + (UIApplication.shared.windows.last?.safeAreaInsets.top)!))
 
     destinationController.preferredContentSize = WindowSize
     destinationController.modalPresentationStyle = .popover
@@ -21,7 +21,6 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
         controller.delegate = delegate
 
         // Create a blank view as the sourceView
-        blankView.frame.offsetBy(dx: 0, dy: 15)
         rootView.view.addSubview(blankView)
         controller.sourceView = blankView
     }
