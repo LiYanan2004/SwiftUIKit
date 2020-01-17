@@ -21,7 +21,7 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
         controller.delegate = delegate
 
         // Create a blank view as the sourceView
-        blankView.frame.insetBy(dx: 0, dy: 15)
+        blankView.frame.offsetBy(dx: 0, dy: 15)
         rootView.view.addSubview(blankView)
         controller.sourceView = blankView
     }
