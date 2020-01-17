@@ -28,6 +28,28 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
     rootView.present(destinationController, animated: true)
 }
 
+@available(iOS 13.0, *)
+public func showPopover(from rootView: UIViewController, to destination: AnyView, WindowSize: CGSize, rect: CGRect, ArrowDirections: UIPopoverArrowDirection) {
+    let destinationController = UIHostingController(rootView: destination)
+    let delegate = PopoverConfiguration()
+    let blankView = UIView(frame: rect.offsetBy(dx: 0, dy: (UIApplication.shared.windows.last?.safeAreaInsets.top)!))
+
+    destinationController.preferredContentSize = WindowSize
+    destinationController.modalPresentationStyle = .popover
+    if let controller = destinationController.popoverPresentationController {
+
+        // override the delegate to make sure it can show up as popover style on iPhone.
+        controller.delegate = delegate
+
+        // Create a blank view as the sourceView
+        rootView.view.addSubview(blankView)
+        controller.sourceView = blankView
+        controller.permittedArrowDirections = ArrowDirections
+    }
+
+    rootView.present(destinationController, animated: true)
+}
+
 public class PopoverConfiguration: NSObject, UIPopoverPresentationControllerDelegate {
     public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
