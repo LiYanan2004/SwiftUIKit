@@ -21,6 +21,7 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
         controller.delegate = delegate
 
         // Create a blank view as the sourceView
+        blankView.frame.insetBy(dx: 0, dy: 15)
         rootView.view.addSubview(blankView)
         controller.sourceView = blankView
     }
@@ -76,7 +77,6 @@ public struct locationPrefrence: ViewModifier {
             .background(prefrenceSetter(coordinateSpaceName: self.coordinateSpaceName))
             .onPreferenceChange(ElementsRectPreferenceKey.self) { preference in
                 self.rect = preference[0].rect
-                self.rect = self.rect.offsetBy(dx: 0, dy: 10) // 简单微调
             }
     }
 }
