@@ -11,7 +11,6 @@ import SwiftUI
 public func showPopover(from rootView: UIViewController, to destination: AnyView, WindowSize: CGSize, rect: CGRect) {
     let destinationController = UIHostingController(rootView: destination)
     let delegate = PopoverConfiguration()
-    let blankView = UIView(frame: rect.offsetBy(dx: 0, dy: (UIApplication.shared.windows.last?.safeAreaInsets.top)!))
 
     destinationController.preferredContentSize = WindowSize
     destinationController.modalPresentationStyle = .popover
@@ -21,6 +20,9 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
         controller.delegate = delegate
 
         // Create a blank view as the sourceView
+        let blankViewRect = rect.offsetBy(dx: 0,
+                                          dy: controller.permittedArrowDirections == .up ? -(UIApplication.shared.windows.last?.safeAreaInsets.top)! : (UIApplication.shared.windows.last?.safeAreaInsets.top)!)
+        let blankView = UIView(frame: blankViewRect)
         rootView.view.addSubview(blankView)
         controller.sourceView = blankView
     }
@@ -32,7 +34,6 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
 public func showPopover(from rootView: UIViewController, to destination: AnyView, WindowSize: CGSize, rect: CGRect, ArrowDirections: UIPopoverArrowDirection) {
     let destinationController = UIHostingController(rootView: destination)
     let delegate = PopoverConfiguration()
-    let blankView = UIView(frame: rect.offsetBy(dx: 0, dy: (UIApplication.shared.windows.last?.safeAreaInsets.top)!))
 
     destinationController.preferredContentSize = WindowSize
     destinationController.modalPresentationStyle = .popover
@@ -40,11 +41,14 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
 
         // override the delegate to make sure it can show up as popover style on iPhone.
         controller.delegate = delegate
+        controller.permittedArrowDirections = ArrowDirections
 
         // Create a blank view as the sourceView
+        let blankViewRect = rect.offsetBy(dx: 0,
+                                          dy: ArrowDirections == .up ? -(UIApplication.shared.windows.last?.safeAreaInsets.top)! : (UIApplication.shared.windows.last?.safeAreaInsets.top)!)
+        let blankView = UIView(frame: blankViewRect)
         rootView.view.addSubview(blankView)
         controller.sourceView = blankView
-        controller.permittedArrowDirections = ArrowDirections
     }
 
     rootView.present(destinationController, animated: true)
