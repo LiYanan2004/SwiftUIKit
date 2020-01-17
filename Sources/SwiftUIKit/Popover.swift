@@ -66,7 +66,7 @@ public struct locationPrefrence: ViewModifier {
     @Binding public var rect: CGRect
     public let coordinateSpaceName: String
 
-    init(rect: Binding<CGRect>, coordinateSpaceName: String) {
+    public init(rect: Binding<CGRect>, coordinateSpaceName: String) {
         self.rect = rect
         self.coordinateSpaceName = coordinateSpaceName
     }
