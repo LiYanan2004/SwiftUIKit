@@ -21,7 +21,7 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
 
         // Create a blank view as the sourceView
         let blankViewRect = rect.offsetBy(dx: 0,
-                                          dy: controller.permittedArrowDirections == .up ? -(UIApplication.shared.windows.last?.safeAreaInsets.top)! : (UIApplication.shared.windows.last?.safeAreaInsets.top)!)
+                                          dy: controller.permittedArrowDirections == .up ? 0 : (UIApplication.shared.windows.last?.safeAreaInsets.top)!)
         let blankView = UIView(frame: blankViewRect)
         rootView.view.addSubview(blankView)
         controller.sourceView = blankView
@@ -45,7 +45,7 @@ public func showPopover(from rootView: UIViewController, to destination: AnyView
 
         // Create a blank view as the sourceView
         let blankViewRect = rect.offsetBy(dx: 0,
-                                          dy: ArrowDirections == .up ? -(UIApplication.shared.windows.last?.safeAreaInsets.top)! : (UIApplication.shared.windows.last?.safeAreaInsets.top)!)
+                                          dy: ArrowDirections == .up ? 0 : (UIApplication.shared.windows.last?.safeAreaInsets.top)!)
         let blankView = UIView(frame: blankViewRect)
         rootView.view.addSubview(blankView)
         controller.sourceView = blankView
