@@ -63,8 +63,13 @@ public struct prefrenceSetter: View {
 
 @available(iOS 13.0, *)
 public struct locationPrefrence: ViewModifier {
-    @Binding private var rect: CGRect
+    @Binding public var rect: CGRect
     public let coordinateSpaceName: String
+
+    init(rect: Binding<CGRect>, coordinateSpaceName: String) {
+        self.rect = rect
+        self.coordinateSpaceName = coordinateSpaceName
+    }
 
     public func body(content: Content) -> some View {
         content
