@@ -11,7 +11,7 @@ import Combine
 
 /// Important: You also need to add `@Environment(\.colorScheme)` to receive the notifications
 @available(iOS 13.0, *)
-public var ColorSchemeDidChangePublisher: AnyPublisher<UIUserInterfaceStyle, Never> {
+public var colorSchemeDidChange: AnyPublisher<UIUserInterfaceStyle, Never> {
     UITraitCollection.current.publisher(for: \.userInterfaceStyle)
         .map { $0 }
         .eraseToAnyPublisher()
